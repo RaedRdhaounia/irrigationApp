@@ -12,6 +12,7 @@ import {
   Pilotage,
   Assist,
   Weather,
+  Settings,
 } from '../screens';
 import {useScreenOptions, useTranslation} from '../hooks';
 
@@ -66,7 +67,11 @@ export default () => {
         component={Weather}
         options={screenOptions.components}
       />
-
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={screenOptions.components}
+      />
       <Stack.Screen
         name="Profile"
         component={Profile}
