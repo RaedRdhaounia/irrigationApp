@@ -49,9 +49,9 @@
     }
   },
   "app": {
-    "name": "Irrigation app",
+    "name": "Soft UI",
     "fullname": "Soft UI Kit",
-    "native": "assist pilotage",
+    "native": "React Native",
     "link": "creative-tim.com"
   },
   "darkMode": "Dark Mode",
@@ -63,14 +63,7 @@
     "profile": "Profile",
     "settings": "Settings",
     "register": "Create account",
-    "extra": "Extra - Automotive",
-    "weather": "Weather",
-    "history": "History",
-    "assist": "Assist",
-    "pilotage": "Pilotage",
-    "logOut": "Log out",
-    "setting": "Setting"
-
+    "extra": "Extra - Automotive"
   },
   "navigation": {
     "home": "Soft UI",

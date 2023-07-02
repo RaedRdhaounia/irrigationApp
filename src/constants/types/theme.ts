@@ -242,12 +242,6 @@ export interface ThemeIcons {
   train: ImageSourcePropType;
   users: ImageSourcePropType;
   warning: ImageSourcePropType;
-  dashboard: ImageSourcePropType;
-  assist : ImageSourcePropType;
-  history : ImageSourcePropType;
-  setting : ImageSourcePropType;
-  weather : ImageSourcePropType;
-  logout: ImageSourcePropType;
 }
 
 export interface ThemeAssets {
