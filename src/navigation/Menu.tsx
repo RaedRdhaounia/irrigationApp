@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Alert, Animated, StyleSheet} from 'react-native';
+import {Alert, Animated, Linking, StyleSheet} from 'react-native';
 
 import {
   useIsDrawerOpen,
@@ -72,6 +72,8 @@ const DrawerContent = (
   const {assets, colors, gradients, sizes} = useTheme();
   const labelColor = colors.text;
 
+  const handleWebLink = useCallback((url: string) => Linking.openURL(url), []);
+
   const handleNavigation = useCallback(
     (to: string) => {
       setActive(to);
@@ -98,7 +100,9 @@ const DrawerContent = (
     },
     {
       name: t('menu.documentation'),
-      to: () => console.log('documentation'),
+      to: () => {
+        handleWebLink('https://github.com/irrigation-automate/irrigationApp');
+      },
       icon: assets.documentation,
     },
     {
