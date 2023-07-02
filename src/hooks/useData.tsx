@@ -94,7 +94,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
 
   // change theme based on isDark updates
   useEffect(() => {
-    setTheme(isDark ? light : dark);
+    setTheme(!isDark ? light : dark);
   }, [isDark]);
 
   const contextValue = {
