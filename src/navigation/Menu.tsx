@@ -23,7 +23,7 @@ const ScreensStack = () => {
 
   const scale = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [1, 0.88],
+    outputRange: [1, 0.75],
   });
 
   const borderRadius = animation.interpolate({
@@ -38,7 +38,7 @@ const ScreensStack = () => {
 
   useEffect(() => {
     Animated.timing(animation, {
-      duration: 200,
+      duration: 1000,
       useNativeDriver: true,
       toValue: isDrawerOpen ? 1 : 0,
     }).start();
