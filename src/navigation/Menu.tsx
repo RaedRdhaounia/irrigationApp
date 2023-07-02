@@ -208,10 +208,7 @@ const DrawerContent = (
           <Text color={labelColor}>{t('darkMode')}</Text>
           <Switch
             checked={isDark}
-            onPress={(checked) => {
-              handleIsDark(checked);
-              Alert.alert(t('pro.title'), t('pro.alert'));
-            }}
+            onPress={(checked) => handleIsDark(checked)}
           />
         </Block>
       </Block>
