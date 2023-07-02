@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const Wether = () => {
+const Weather = () => {
   return (
     <View>
       <Text>Wether screen</Text>
@@ -9,4 +9,4 @@ const Wether = () => {
   );
 };
 
-export default Wether;
+export default Weather;
