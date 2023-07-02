@@ -88,17 +88,17 @@ const DrawerContent = (
   // screen list for Drawer menu
   const screens = [
     {name: t('screens.home'), to: 'Home', icon: assets.dashboard},
-    {name: t('screens.weather'), to: 'Components', icon: assets.weather},
-    {name: t('screens.history'), to: 'Articles', icon: assets.history},
-    {name: t('screens.assist'), to: 'Pro', icon: assets.assist},
-    {name: t('screens.pilotage'), to: 'Profile', icon: assets.settings},
+    {name: t('screens.weather'), to: 'Weather', icon: assets.weather},
+    {name: t('screens.history'), to: 'History', icon: assets.history},
+    {name: t('screens.assist'), to: 'Assist', icon: assets.assist},
+    {name: t('screens.pilotage'), to: 'Pilotage', icon: assets.settings},
   ];
 
   // secondary screen list for Drawer menu
   const configScreens = [
     {
       name: t('screens.setting'),
-      to: () => handleNavigation('Profile'),
+      to: () => handleNavigation('Settings'),
       icon: assets.setting,
     },
     {
