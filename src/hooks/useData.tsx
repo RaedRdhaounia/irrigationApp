@@ -17,7 +17,7 @@ import {
   CATEGORIES,
   ARTICLES,
 } from '../constants/mocks';
-import {light, dark} from '../constants';
+import {light} from '../constants';
 
 export const DataContext = React.createContext({});
 
@@ -94,7 +94,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
 
   // change theme based on isDark updates
   useEffect(() => {
-    setTheme(!isDark ? light : dark);
+    setTheme(isDark ? light : light);
   }, [isDark]);
 
   const contextValue = {

@@ -23,7 +23,7 @@ const ScreensStack = () => {
 
   const scale = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [1, 0.75],
+    outputRange: [1, 0.88],
   });
 
   const borderRadius = animation.interpolate({
@@ -38,7 +38,7 @@ const ScreensStack = () => {
 
   useEffect(() => {
     Animated.timing(animation, {
-      duration: 1000,
+      duration: 200,
       useNativeDriver: true,
       toValue: isDrawerOpen ? 1 : 0,
     }).start();
@@ -72,19 +72,16 @@ const DrawerContent = (
   const {assets, colors, gradients, sizes} = useTheme();
   const labelColor = colors.text;
 
-  const handleWebLink = useCallback((url: string) => Linking.openURL(url), []);
-
   const handleNavigation = useCallback(
-    (to: string) => {
+    (to) => {
       setActive(to);
       navigation.navigate(to);
     },
     [navigation, setActive],
   );
-  const handleLogOut = () => {
-    // ___ for now just console click to the button and next will be related to local storage or/and context user state
-    console.log('click on logout button');
-  };
+
+  const handleWebLink = useCallback((url) => Linking.openURL(url), []);
+
   // screen list for Drawer menu
   const screens = [
     {name: t('screens.home'), to: 'Home', icon: assets.dashboard},
@@ -125,8 +122,9 @@ const DrawerContent = (
         <Block flex={0} row align="center" marginBottom={sizes.l}>
           <Image
             radius={0}
-            width={60}
-            height={60}
+            width={33}
+            height={33}
+            color={colors.text}
             source={assets.logo}
             marginRight={sizes.sm}
           />
@@ -158,7 +156,13 @@ const DrawerContent = (
                 height={sizes.md}
                 marginRight={sizes.s}
                 gradient={gradients[isActive ? 'primary' : 'white']}>
-                <Image radius={0} width={14} height={14} source={screen.icon} />
+                <Image
+                  radius={0}
+                  width={14}
+                  height={14}
+                  source={screen.icon}
+                  color={colors[isActive ? 'white' : 'black']}
+                />
               </Block>
               <Text p semibold={isActive} color={labelColor}>
                 {screen.name}
@@ -178,37 +182,45 @@ const DrawerContent = (
         <Text semibold transform="uppercase" opacity={0.5}>
           {t('menu.documentation')}
         </Text>
-        {configScreens.map((screen, index) => {
-          return (
-            <Button
-              key={index}
-              row
-              justify="flex-start"
-              marginTop={sizes.sm}
-              marginBottom={sizes.s}
-              onPress={screen.to}>
-              <Block
-                flex={0}
-                radius={6}
-                align="center"
-                justify="center"
-                width={sizes.md}
-                height={sizes.md}
-                marginRight={sizes.s}>
-                <Image radius={0} width={14} height={14} source={screen.icon} />
-              </Block>
-              <Text p color={labelColor}>
-                {screen.name}
-              </Text>
-            </Button>
-          );
-        })}
+
+        <Button
+          row
+          justify="flex-start"
+          marginTop={sizes.sm}
+          marginBottom={sizes.s}
+          onPress={() =>
+            handleWebLink('https://github.com/creativetimofficial')
+          }>
+          <Block
+            flex={0}
+            radius={6}
+            align="center"
+            justify="center"
+            width={sizes.md}
+            height={sizes.md}
+            marginRight={sizes.s}
+            gradient={gradients.white}>
+            <Image
+              radius={0}
+              width={14}
+              height={14}
+              color={colors.black}
+              source={assets.documentation}
+            />
+          </Block>
+          <Text p color={labelColor}>
+            {t('menu.started')}
+          </Text>
+        </Button>
 
         <Block row justify="space-between" marginTop={sizes.sm}>
           <Text color={labelColor}>{t('darkMode')}</Text>
           <Switch
             checked={isDark}
-            onPress={(checked) => handleIsDark(checked)}
+            onPress={(checked) => {
+              handleIsDark(checked);
+              Alert.alert(t('pro.title'), t('pro.alert'));
+            }}
           />
         </Block>
       </Block>
