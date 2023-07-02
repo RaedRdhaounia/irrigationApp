@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Alert, Animated, Linking, StyleSheet} from 'react-native';
+import {Alert, Animated, StyleSheet} from 'react-native';
 
 import {
   useIsDrawerOpen,
@@ -73,27 +73,40 @@ const DrawerContent = (
   const labelColor = colors.text;
 
   const handleNavigation = useCallback(
-    (to) => {
+    (to: string) => {
       setActive(to);
       navigation.navigate(to);
     },
     [navigation, setActive],
   );
 
-  const handleWebLink = useCallback((url) => Linking.openURL(url), []);
-
   // screen list for Drawer menu
   const screens = [
-    {name: t('screens.home'), to: 'Home', icon: assets.home},
-    {name: t('screens.components'), to: 'Components', icon: assets.components},
-    {name: t('screens.articles'), to: 'Articles', icon: assets.document},
-    {name: t('screens.rental'), to: 'Pro', icon: assets.rental},
-    {name: t('screens.profile'), to: 'Profile', icon: assets.profile},
-    {name: t('screens.settings'), to: 'Pro', icon: assets.settings},
-    {name: t('screens.register'), to: 'Register', icon: assets.register},
-    {name: t('screens.extra'), to: 'Pro', icon: assets.extras},
+    {name: t('screens.home'), to: 'Home', icon: assets.dashboard},
+    {name: t('screens.weather'), to: 'Components', icon: assets.weather},
+    {name: t('screens.history'), to: 'Articles', icon: assets.history},
+    {name: t('screens.assist'), to: 'Pro', icon: assets.assist},
+    {name: t('screens.pilotage'), to: 'Profile', icon: assets.settings},
   ];
 
+  // secondary screen list for Drawer menu
+  const configScreens = [
+    {
+      name: t('screens.setting'),
+      to: () => handleNavigation('Profile'),
+      icon: assets.setting,
+    },
+    {
+      name: t('menu.documentation'),
+      to: () => console.log('documentation'),
+      icon: assets.documentation,
+    },
+    {
+      name: t('screens.logOut'),
+      to: () => console.log('logout'),
+      icon: assets.logout,
+    },
+  ];
   return (
     <DrawerContentScrollView
       {...props}
@@ -139,13 +152,7 @@ const DrawerContent = (
                 height={sizes.md}
                 marginRight={sizes.s}
                 gradient={gradients[isActive ? 'primary' : 'white']}>
-                <Image
-                  radius={0}
-                  width={14}
-                  height={14}
-                  source={screen.icon}
-                  color={colors[isActive ? 'white' : 'black']}
-                />
+                <Image radius={0} width={14} height={14} source={screen.icon} />
               </Block>
               <Text p semibold={isActive} color={labelColor}>
                 {screen.name}
@@ -165,36 +172,31 @@ const DrawerContent = (
         <Text semibold transform="uppercase" opacity={0.5}>
           {t('menu.documentation')}
         </Text>
-
-        <Button
-          row
-          justify="flex-start"
-          marginTop={sizes.sm}
-          marginBottom={sizes.s}
-          onPress={() =>
-            handleWebLink('https://github.com/creativetimofficial')
-          }>
-          <Block
-            flex={0}
-            radius={6}
-            align="center"
-            justify="center"
-            width={sizes.md}
-            height={sizes.md}
-            marginRight={sizes.s}
-            gradient={gradients.white}>
-            <Image
-              radius={0}
-              width={14}
-              height={14}
-              color={colors.black}
-              source={assets.documentation}
-            />
-          </Block>
-          <Text p color={labelColor}>
-            {t('menu.started')}
-          </Text>
-        </Button>
+        {configScreens.map((screen, index) => {
+          return (
+            <Button
+              key={index}
+              row
+              justify="flex-start"
+              marginTop={sizes.sm}
+              marginBottom={sizes.s}
+              onPress={screen.to}>
+              <Block
+                flex={0}
+                radius={6}
+                align="center"
+                justify="center"
+                width={sizes.md}
+                height={sizes.md}
+                marginRight={sizes.s}>
+                <Image radius={0} width={14} height={14} source={screen.icon} />
+              </Block>
+              <Text p color={labelColor}>
+                {screen.name}
+              </Text>
+            </Button>
+          );
+        })}
 
         <Block row justify="space-between" marginTop={sizes.sm}>
           <Text color={labelColor}>{t('darkMode')}</Text>
