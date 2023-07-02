@@ -81,7 +81,10 @@ const DrawerContent = (
     },
     [navigation, setActive],
   );
-
+  const handleLogOut = () => {
+    // ___ for now just console click to the button and next will be related to local storage or/and context user state
+    console.log('click on logout button');
+  };
   // screen list for Drawer menu
   const screens = [
     {name: t('screens.home'), to: 'Home', icon: assets.dashboard},
@@ -107,7 +110,7 @@ const DrawerContent = (
     },
     {
       name: t('screens.logOut'),
-      to: () => console.log('logout'),
+      to: () => handleLogOut(),
       icon: assets.logout,
     },
   ];
