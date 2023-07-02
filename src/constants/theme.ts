@@ -67,12 +67,6 @@ export const ICONS: ThemeIcons = {
   train: require('../assets/icons/train.png'),
   users: require('../assets/icons/users.png'),
   warning: require('../assets/icons/warning.png'),
-  assist: require('../assets/icons/assist.png'),
-  history: require('../assets/icons/history.png'),
-  setting: require('../assets/icons/setting.png'),
-  weather: require('../assets/icons/weather.png'),
-  dashboard: require('../assets/icons/dashboard.png'),
-  logout: require('../assets/icons/log-out.png'),
 };
 
 export const ASSETS: ThemeAssets = {
