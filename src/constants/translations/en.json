@@ -63,7 +63,14 @@
     "profile": "Profile",
     "settings": "Settings",
     "register": "Create account",
-    "extra": "Extra - Automotive"
+    "extra": "Extra - Automotive",
+    "weather": "Weather",
+    "history": "History",
+    "assist": "Assist",
+    "pilotage": "Pilotage",
+    "logOut": "Log out",
+    "setting": "Setting"
+
   },
   "navigation": {
     "home": "Soft UI",
