@@ -118,9 +118,8 @@ const DrawerContent = (
         <Block flex={0} row align="center" marginBottom={sizes.l}>
           <Image
             radius={0}
-            width={33}
-            height={33}
-            color={colors.text}
+            width={60}
+            height={60}
             source={assets.logo}
             marginRight={sizes.sm}
           />
