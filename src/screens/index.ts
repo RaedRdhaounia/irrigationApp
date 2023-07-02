@@ -17,3 +17,7 @@ export {default as Booking} from './Pro';
 export {default as Settings} from './Pro';
 export {default as Shopping} from './Pro';
 export {default as Pro} from './Pro';
+export {default as Weather} from './Weather';
+export {default as Assist} from './Assist';
+export {default as Pilotage} from './Pilotage';
+export {default as History} from './History';
